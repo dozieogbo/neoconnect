@@ -16,6 +16,9 @@ use App\User;
 Auth::routes();
 
 Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home']);
+Route::get('/contact', function () { return view('home.contact')->with('active', 'contact');})->name('contact');
+Route::get('/about', function () { return view('home.about')->with('active', 'about');})->name('about');
+Route::get('/how-it-works', function () { return view('home.how')->with('active', 'how');})->name('how');
 Route::get('/countries', ['uses' => 'HomeController@getcountries', 'as' => 'country']);
 Route::get('/countries/{id}/states', ['uses' => 'HomeController@getstates', 'as' => 'state']);
 Route::get('/states/{id}/towns', ['uses' => 'HomeController@getcities', 'as' => 'town']);

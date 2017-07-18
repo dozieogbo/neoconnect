@@ -27,9 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::check())
-            return redirect()->route('user.dashboard');
-        return view('home');
+        if(Auth::check()){
+            if(Auth::user()->role == 'user')
+                return redirect()->route('user.dashboard');
+            else
+                return redirect()->route('admin.dashboard');
+        }
+        return view('home.index')->with('active', 'home');
     }
 
     public function getannouncements(){

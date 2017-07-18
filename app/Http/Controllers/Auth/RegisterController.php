@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'firstname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'sponsor_id' => 'nullable|exists:members,member_id',
+            'sponsor_id' => 'required|exists:members,member_id',
             'phone_no' => ['required', 'regex:/^([0]\d{10})$/'],
             'country' => ['required', 'exists:countries,id'],
             'lga_id' => ['required_if:country,566|exists:towns,id']
